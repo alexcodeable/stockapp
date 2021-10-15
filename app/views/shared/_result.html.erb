@@ -1,0 +1,33 @@
+ 
+ 
+<%= render "shared/info" %>
+
+<% if @stock %>
+    <div class="card mt-5">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Company logo</th>
+              <th scope="col">Stock Symbol</th>
+              <th scope="col">Company</th>
+              <th scope="col">Stock Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Coming Soon...</td>
+              <td class="text-uppercase"><%= @stock.symbol %></td>
+              <td><%= @stock.company %></td>
+              <td><%= @stock.last_price %></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="card mt-3 mb-3 me-3 ms-3">
+        <div class="card-body">
+          <strong>News: </strong> <p>Coming Soon...</p>
+        </div>
+    </div>
+<% end %>

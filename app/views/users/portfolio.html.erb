@@ -1,0 +1,24 @@
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-5 border-bottom">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">My Portfolio</h1>
+      <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers.</p>
+    </div>
+</header>
+
+
+<form action="<%= search_path %>" data-remote="true" method="get">
+ <div class="row">
+
+  <div class="col-sm-8 mx-auto d-flex">
+    <input class="form-control " name="stock" id="stock" type="search" placeholder="Search Stocks by Stock Symbol" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search Stocks </button>
+  </div>
+  
+  <div id="result">
+  </div>
+  <%#= render "shared/result" %>
+  </div>
+ </div>
+</form> 
+

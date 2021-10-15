@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#iex stock api
+gem 'iex-ruby-client'
+
 #user authentication
 gem 'devise'
 gem 'omniauth-google-oauth2'

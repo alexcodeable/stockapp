@@ -1,0 +1,37 @@
+<header class="mb-5">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"> <i class="bi bi-stack text-success"></i> StockApp</a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a href='/pricing' class="nav-link">Pricing</a>
+          </li>
+        </ul>
+        <% if user_signed_in?%>
+          <a class='btn btn-danger' href="/sign_out">sign out</a>
+        <% else %>
+          <a class='btn btn-outline-success me-2' href="/sign_in">sign in</a>
+          <a class='btn btn-success' href="/sign_up">sign up</a>
+        <% end %>
+        <%
+=begin%>
+ <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> 
+<%
+=end%>
+      </div>
+    </div>
+  </nav>
+</header>

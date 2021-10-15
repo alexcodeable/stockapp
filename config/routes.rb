@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :user_stocks
+  get 'search', to: 'stock#search'
+  get 'portfolio', to: 'users#portfolio'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     get 'sign_up', to: 'devise/registrations#new'
@@ -12,5 +15,6 @@ Rails.application.routes.draw do
   end
   root 'home#index'
   get 'home/index'
+  get 'pricing', to: 'home#pricing'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
