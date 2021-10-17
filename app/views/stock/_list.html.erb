@@ -1,0 +1,22 @@
+      
+      
+<table class="table table-bordered table-sm">
+  <thead>
+    <tr>
+    <th scope="col">Stock Symbol</th>
+    <th scope="col">Company</th>
+    <th scope="col">Stock Price</th>
+    <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tracked.each do | stock | %>
+    <tr>
+    <td class="text-uppercase"><%= stock.symbol %></td>
+    <td><%= stock.company %></td>
+    <td><%= stock.last_price %></td>
+    <td><%= link_to "Remove", user_stock_path(stock), class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

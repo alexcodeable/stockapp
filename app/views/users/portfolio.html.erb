@@ -15,9 +15,20 @@
     <button class="btn btn-outline-success" type="submit">Search Stocks </button>
   </div>
   
-  <div id="result">
+  <div class="row mt-4">
+    <div class="col-sm-10 mx-auto d-flex">
+      <div id="result">
+      </div>
+    </div>
   </div>
-  <%#= render "shared/result" %>
+
+   <div class="row mt-4">
+    <div class="col-sm-10 mx-auto d-flex">
+    <% if !@tracked.empty?%>
+      <%= render "stock/list" %>
+      <% end %>
+    </div>
+  </div>
   </div>
  </div>
 </form> 
