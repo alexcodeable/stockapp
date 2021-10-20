@@ -1,29 +1,49 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                 <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-bold fs-5">Sign Up</h5>
+              <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <div class="form-floating mb-3">
+                <input autofocus="autofocus" class="form-control" autocomplete="email" type="email" placeholder="name@example.com" value="" name="user[email]" id="user_email floatingInput">
+                <label for="user_email floatingInput">Email address</label>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="form-floating mb-3">
+              
+                <input autocomplete="new-password" name="user[password]" type="password" class="form-control" id="floatingPassword user_password" placeholder="Password (6 characters minimum)">
+                <label for="floatingPassword user_password">Password (6 characters minimum)</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input autocomplete="new-password" type="password" name="user[password_confirmation]" class="form-control" id="floatingPassword user_password_confirmation" placeholder="Password">
+                <label for="floatingPassword user_password_confirmation">Password confirmation</label>
+              </div>
+
+             
+
+              <div class="d-grid">
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign up</button>
+              </div>
+              <hr class="my-4">
+              <div class="d-grid mb-2">
+                <a rel="nofollow" data-method="post" href="/users/auth/google" data-disable-with="Sign up" class="btn btn-google btn-login text-uppercase fw-bold">
+                  <i class="bi bi-google me-2"></i> Sign up with Google
+                </a>
+              </div><br>
+                Already have account? <a class="" href="/users/sign_in">Sign in</a><br><br>
+               <a href="/users/confirmation/new">Didn't receive confirmation instructions?</a><br>
+
+               <a href="/users/unlock/new">Didn't receive unlock instructions?</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

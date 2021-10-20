@@ -8,6 +8,22 @@ class User < ApplicationRecord
 
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
+    
+  has_one_attached :avatar
+  after_commit :add_default_avatar, on: %i[ create update ]
+
+  def avatar_thumbnail
+    if avatar.attached?
+    avatar.variant(resize: "150x150!").processed
+    else
+      "/default_avatar.jpg"
+    end
+  end
+
+  def full_name
+    return "#{first_name} #{last_name}" if first_name || last_name 
+    "Anonymous"
+  end
 
 
   def stock_already_tracked?(stock_symbol)
@@ -34,6 +50,17 @@ class User < ApplicationRecord
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
+    end
+  end
+
+  private
+  def add_default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(
+          Rails.root.join( 'app', 'assets', 'images', 'default_avatar.jpg')
+        ), filename: 'default_avatar.jpg', content_type: 'image/jpg'
+      )
     end
   end
         
