@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :user_stocks, only: [:create, :destroy]
   get 'search', to: 'stock#search'
+  get 'search_friend', to: 'users#search'
   get 'portfolio', to: 'users#portfolio'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
