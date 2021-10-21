@@ -1,19 +1,24 @@
 
 <div class="container">
+                 <%= render "devise/shared/error_messages", resource: resource %>
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                 <%= render "devise/shared/error_messages", resource: resource %>
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-bold fs-5">Sign Up</h5>
               <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              
               <div class="form-floating mb-3">
-                <input autofocus="autofocus" class="form-control" autocomplete="email" type="email" placeholder="name@example.com" value="" name="user[email]" id="user_email floatingInput">
+                <input autofocus="autofocus" autocomplete="First Name" class="form-control" placeholder="first name" type="text" name="user[first_name]" id="user_first_name floatingInput">
+                <label for="user_first_name floatingInput">First Name</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input  class="form-control" autocomplete="email" type="email" placeholder="name@example.com" value="" name="user[email]" id="user_email floatingInput">
                 <label for="user_email floatingInput">Email address</label>
               </div>
 
               <div class="form-floating mb-3">
-              
                 <input autocomplete="new-password" name="user[password]" type="password" class="form-control" id="floatingPassword user_password" placeholder="Password (6 characters minimum)">
                 <label for="floatingPassword user_password">Password (6 characters minimum)</label>
               </div>
