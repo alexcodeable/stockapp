@@ -1,0 +1,15 @@
+ 
+ 
+<%= render "shared/info" %>
+
+<% if @friend %>
+    <div class="card mt-5">
+      <div class="card-body">
+      <strong class='me-3 ms-4'>Name:</strong><%= @friend %>
+      <strong class='me-3 ms-4'>Email Address:</strong><%= @friend %>
+      <strong class=' ms-4'>Profile:</strong><%= link_to "View Profile", "#", class: 'badge bg-secondary lk ms-3', method: :post %>
+          
+          <%= link_to "Add Friend", "#", class: 'btn btn-success btn-sm ms-3', method: :post %>
+      </div>
+    </div>
+<% end %>
