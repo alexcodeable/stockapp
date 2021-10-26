@@ -1,6 +1,6 @@
       
       
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-hover table-sm">
   <thead>
     <tr>
     <th scope="col">Stock Symbol</th>
@@ -15,7 +15,29 @@
     <td class="text-uppercase"><%= stock.symbol %></td>
     <td><%= stock.company %></td>
     <td><%= stock.last_price %></td>
-    <td><%= link_to "Remove", user_stock_path(stock), class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    <td>
+    <% if @user == current_user%>
+      <%= link_to "Remove", user_stock_path(stock), class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% else %>
+      <% if current_user.track_stock?(stock.symbol)%>
+          <%= link_to "Add to portfolio", user_stocks_path(user: current_user, symbol: stock.symbol), class: 'btn btn-success btn-sm ms-3', method: :post %>
+      <% else %>
+        <span class="badge bg-secondary">You are already tracking 
+          <% if !current_user.stock_limit?%>
+            10 stocks
+          <% end %>
+           <% if current_user.stock_already_tracked?(stock.symbol)%>
+            this stock
+          <% end %>
+        </span>
+
+          <% if !current_user.stock_limit?%>
+           <%= link_to "upgrade plan", pricing_path %>
+          <% end %>
+         
+      <% end %>
+    <% end %>
+    </td>
     </tr>
   <% end %>
   </tbody>

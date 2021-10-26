@@ -2,12 +2,19 @@ class UsersController < ApplicationController
   before_action :authenticate_user! 
   def portfolio
     @tracked = current_user.stocks
+    @user = current_user
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @tracked = @user.stocks
   end
 
   def search
     if params[:friend].present?
-      @friend = params[:friend]
-      if @friend
+      @friends = User.search(params[:friend])
+      @friends = current_user.except_current_user(@friends)
+      if @friends
         respond_to do |format|
           format.js { render partial: 'users/friend_result' }
         end

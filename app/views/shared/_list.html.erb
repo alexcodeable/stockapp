@@ -1,4 +1,4 @@
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-hover table-sm">
   <thead>
     <tr>
     <th scope="col">Email Address</th>
@@ -13,7 +13,8 @@
     <td class=""><%= friend.email %></td>
     <td><%= friend.first_name %></td>
     <td><%= friend.last_name %></td>
-    <td><%= link_to "unfollow", '#', class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    <td><%= link_to "unfollow", friendship_path(friend), class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Do you want to stop following this friend?'} %>
+        <%= link_to "View Profile", user_path(friend), class: 'badge bg-secondary lk ms-3'%></td>
     </tr>
   <% end %>
   </tbody>

@@ -23,6 +23,38 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(param)
+    param.strip!
+    result = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
+    return nil unless result
+    result
+  end
+
+  def self.first_name_matches(param)
+    matches('first_name', param)
+  end
+
+  def self.last_name_matches(param)
+    matches('last_name', param)
+  end
+
+  def self.email_matches(param)
+    matches('email', param)
+  end
+
+  def self.matches(field_name, param)
+    where("#{field_name} like ?", "%#{param}%")
+  end
+
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
+  def not_friend_with?(id_of_friend)
+    !self.friends.where(id: id_of_friend).exists?
+  end
+
+
   def full_name
     return "#{first_name} #{last_name}" if first_name || last_name 
   "Anonymous"
@@ -36,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def stock_limit?
-    stocks.count < 10
+    stocks.count < 12
   end
 
   def track_stock?(stock_symbol)
