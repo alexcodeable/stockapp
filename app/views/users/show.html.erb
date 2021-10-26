@@ -6,7 +6,7 @@
         <span class="font-weight-bold"><%= @user.full_name%></span>
         <span class=" badge bg-secondary text-white ps-3 pe-3 mb-3"><%= @user.email%></span>
         
-        <% if current_user.not_friend_with?(@user.id) %>
+        <% if current_user.not_friend_with?(@user) %>
             <%= link_to "Add Friend", friendships_path(friend: @user), class: 'btn btn-success btn-sm ', method: :post %>
           <% else %>
             <span class="badge bg-dark">You are friends</span>
@@ -22,9 +22,9 @@
         </div>
 
           <% if !@tracked.empty?%>
-            <%= render "stock/list" %>
+              <%= render "stock/list" %>
             <% else%>
-            <p class="badge bg-dark">This user is not tracking any stock</p>
+              <p class="badge bg-dark">This user is not tracking any stock</p>
           <% end %>
       </div>
     </div>

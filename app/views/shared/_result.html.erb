@@ -13,15 +13,15 @@
       <% else %>
         <span class="badge bg-secondary">You are already tracking 
           <% if !current_user.stock_limit?%>
-            10 stocks
+            12 stocks
           <% end %>
            <% if current_user.stock_already_tracked?(@stock.symbol)%>
             this stock
           <% end %>
         </span>
 
-          <% if !current_user.stock_limit?%>
-           <%= link_to "upgrade plan", pricing_path %>
+          <% if !current_user.stock_limit? %>
+           <%= link_to "upgrade plan", pricing_path %> 
           <% end %>
          
       <% end %>
