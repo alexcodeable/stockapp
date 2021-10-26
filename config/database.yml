@@ -83,4 +83,4 @@ production:
   <<: *default
   database: stockapp_production
   username: stockapp
-  password: <%= ENV['CLONEBNB_DATABASE_PASSWORD'] %>
+  password: <%= ENV['STOCKAPP_DATABASE_PASSWORD'] %>
