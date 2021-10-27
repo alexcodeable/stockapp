@@ -6,9 +6,13 @@
 }
 
 
-a:hover{
+table, tr td a:hover{
     color: white;
     text-decoration: none !important;
+}
+
+a{
+    text-decoration: none;
 }
 
 .hgt{
