@@ -33,8 +33,7 @@ gem "omniauth-rails_csrf_protection"
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
-#mailiing
-gem 'mailjet'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -55,6 +54,12 @@ group :development do
   gem 'spring'
   gem 'letter_opener'
 end
+
+group :production do
+#mailiing
+gem 'mailjet'
+end
+
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
