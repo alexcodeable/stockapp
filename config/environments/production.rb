@@ -67,7 +67,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'in-v3.mailjet.com',
-    port:                 465,
+    port:                  587,
     domain:               'https://stuck-track.herokuapp.com',
     user_name:             Rails.application.credentials.mailjet[:api_key],
     password:              Rails.application.credentials.mailjet[:secret_key],
@@ -127,4 +127,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.action_mailer.default_url_options = { host: 'stuck-track.herokuapp.com', protocol: 'https' }
 end
