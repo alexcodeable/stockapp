@@ -70,7 +70,7 @@ Rails.application.configure do
     port:                  587,
     domain:               'stuck-track.herokuapp.com',
     user_name:            'apikey',
-    password:             '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',
+    password:              Rails.application.credentials.sendgrid[:api_key],
     authentication:       'plain',
     enable_starttls_auto: true }
 
