@@ -58,6 +58,7 @@ end
 group :production do
 #mailiing
 gem 'mailjet'
+gem 'sendgrid-ruby'
 end
 
 
