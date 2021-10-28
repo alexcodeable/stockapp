@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -62,15 +62,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Stockapp_production"
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'in-v3.mailjet.com',
+    address:              'smtp.sendgrid.net',
     port:                  587,
-    domain:               'https://stuck-track.herokuapp.com',
-    user_name:             Rails.application.credentials.mailjet[:api_key],
-    password:              Rails.application.credentials.mailjet[:secret_key],
+    domain:               'stuck-track.herokuapp.com',
+    user_name:            'apikey',
+    password:             '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',
     authentication:       'plain',
     enable_starttls_auto: true }
 
