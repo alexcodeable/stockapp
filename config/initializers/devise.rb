@@ -279,7 +279,7 @@ Devise.setup do |config|
     name: 'google',
     prompt: 'select_account',
     access_type: 'offline',
-    scope: 'email',
+    scope: 'email, profile',
     stategy_class: OmniAuth::Strategies::GoogleOauth2
   )
 

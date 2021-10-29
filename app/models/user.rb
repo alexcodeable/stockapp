@@ -13,15 +13,9 @@ class User < ApplicationRecord
 
   
   has_one_attached :avatar
-  after_commit :add_default_avatar, on: %i[ create update ]
+  after_commit :add_default_avatar, on: %i[ update ]
 
-  def avatar_thumbnail
-    if avatar.attached?
-    avatar.variant(resize: "150x150!").processed
-    else
-      "/default_avatar.jpg"
-    end
-  end
+
 
   def self.search(param)
     param.strip!
@@ -88,6 +82,14 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
     end
+  end
+
+  def avatar_thumbnail
+    # if avatar.attached?
+    # avatar.variant(resize: "150x150!").processed
+    # else
+      "/default_avatar.jpg"
+    # end
   end
 
   private
