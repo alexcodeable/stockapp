@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show], :constraints => { :id => /[0-9|]+/ }
+  resources :users, only: [:show]#, :constraints => { :id => /[0-9|]+/ }
   resources :friendships, only: [:create, :destroy]
   resources :user_stocks, only: [:create, :destroy]
   get 'search', to: 'stock#search'

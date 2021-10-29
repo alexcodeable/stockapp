@@ -11,7 +11,7 @@ class UserStocksController < ApplicationController
   end
 
   def destroy
-    stock = Stock.find(params[:id])
+    stock = Stock.friendly.find(params[:id])
     user_stock = UserStock.where(user_id: current_user.id, stock_id: stock.id).first
     user_stock.destroy
     flash[:notice] = "Stock #{stock.company} was successfully removed from your portfolio"

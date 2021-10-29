@@ -4,7 +4,8 @@ class Stock < ApplicationRecord
   validates :symbol, :company, presence: true
   before_save { self.symbol.downcase!}
 
-
+  extend FriendlyId
+  friendly_id :company, use: :slugged
 
   def self.new_lookup(stock_symbol)
     client = IEX::Api::Client.new(

@@ -11,10 +11,12 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[ update ]
-
+  
 
 
   def self.search(param)

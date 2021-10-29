@@ -9,7 +9,7 @@
         <% @friends.each do |friend| %>
           <tbody>
             <tr>
-              <td><strong class='me-3'>Name:</strong><%= friend.full_name %></td>
+              <td><strong class='me-3'>Name:</strong><%= friend.name %></td>
               <td><strong class='me-3 ms-4'>Email Address:</strong><%= friend.email %></td>
               <td><strong class=' ms-4'>Profile:</strong><%= link_to "View Profile", user_path(friend), class: 'badge bg-secondary lk ms-3'%>
               <% if current_user.not_friend_with?(friend.id) %>
