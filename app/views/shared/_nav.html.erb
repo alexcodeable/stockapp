@@ -22,10 +22,10 @@
            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle lk" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <%= image_tag(current_user.avatar, width: "30", height: "30", style: "border-radius: 50%") if current_user.avatar.attached? %>
-                <%= current_user.full_name %>
+                <%= current_user.name %>
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="#"><%= current_user.full_name %> <br> <span><%= current_user.email %></span></a>
+                <a class="dropdown-item" href="#"><%= current_user.name %> <br> <span><%= current_user.email %></span></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><i class="bi bi-bell"></i> Notifications <span class="badge bg-secondary">4</span></a>
                 <a class="dropdown-item text-success" href="/pricing"><i class="bi bi-person-check"></i> Become a pro Member</a>

@@ -13,6 +13,7 @@ class Users::OmniauthCallbacksController < ApplicationController
       end
     
       def failure
+        flash[:alert] = 'There was a problem signing you in. Please register or try signing in later.'
         redirect_to root_path
       end
 end
