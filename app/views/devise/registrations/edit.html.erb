@@ -6,7 +6,7 @@
     <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
         <%= image_tag(resource.avatar, class: "rounded-circle mt-5 mb-2", width: "150", height: "150") if resource.avatar.attached? %>
-        <span class="font-weight-bold"><%= current_user.name %></span>
+        <span class="font-weight-bold text-capitalize"><%= current_user.name %></span>
         <span class=" badge bg-secondary text-white ps-3 pe-3"><%= current_user.email %></span>
         <%
 =begin%>

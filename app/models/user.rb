@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :stocks, through: :user_stocks
   has_many :friendships
   has_many :friends, through: :friendships
+  before_save { self.name.downcase!}
+  before_save { self.email.downcase!}
+
+
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -21,17 +25,13 @@ class User < ApplicationRecord
 
   def self.search(param)
     param.strip!
-    result = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
+    result = (name_matches(param) + email_matches(param)).uniq
     return nil unless result
     result
   end
 
-  def self.first_name_matches(param)
-    matches('first_name', param)
-  end
-
-  def self.last_name_matches(param)
-    matches('last_name', param)
+  def self.name_matches(param)
+    matches('name', param)
   end
 
   def self.email_matches(param)

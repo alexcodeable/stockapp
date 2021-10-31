@@ -3,7 +3,7 @@
     <div class="col-md-4 border-right bg-light">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
       <%= image_tag(@user.avatar, class: "rounded-circle mt-5 mb-2", width: "150", height: "150") %>
-        <span class="font-weight-bold"><%= @user.full_name%></span>
+        <span class="font-weight-bold text-capitalize"><%= @user.name%></span>
         <span class=" badge bg-secondary text-white ps-3 pe-3 mb-3"><%= @user.email%></span>
         
         <% if current_user.not_friend_with?(@user) %>
@@ -18,13 +18,13 @@
     <div class="col-md-8 border-right">
       <div class="p-3 py-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">User stocks</h4>
+            <h4 class="text-right text-capitalize"><%= @user.name%> stocks</h4>
         </div>
 
           <% if !@tracked.empty?%>
               <%= render "stock/list" %>
             <% else%>
-              <p class="badge bg-dark">This user is not tracking any stock</p>
+              <p class="badge bg-dark text-capitalize fs-5"><%= @user.name%> is not tracking any stock</p>
           <% end %>
       </div>
     </div>

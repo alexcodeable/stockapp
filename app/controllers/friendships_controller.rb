@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
     friend = User.friendly.find(params[:friend])
     current_user.friendships.build(friend_id: friend.id)
     if current_user.save
-      flash[:notice] = "You are now following #{friend.full_name}"
+      flash[:notice] = "You are now following #{friend.name}"
     else
       flash[:alert] = "Something went wrong with the following request"
     end
