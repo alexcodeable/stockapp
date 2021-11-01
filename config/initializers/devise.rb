@@ -278,9 +278,9 @@ Devise.setup do |config|
     Rails.application.credentials.google[:client_secret], 
     name: 'google',
     prompt: 'select_account',
-    access_type: 'offline',
+    # access_type: 'offline',
     scope: 'userinfo.email, userinfo.profile',
-    info: 'email, first_name, last_name',
+    info: 'email, first_name, last_name, birthday, gender',
     stategy_class: OmniAuth::Strategies::GoogleOauth2
   )
 
