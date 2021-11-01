@@ -6,9 +6,9 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable, 
          :omniauthable
 
-  has_many :user_stocks
+  has_many :user_stocks, dependent: :destroy
   has_many :stocks, through: :user_stocks
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   before_save { self.name.downcase!}
   before_save { self.email.downcase!}
@@ -39,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def self.matches(field_name, param)
-    where("#{field_name} like ?", "%#{param}%")
+    where("#{field_name} like ?", "%#{param.downcase}%")
   end
 
   def except_current_user(users)

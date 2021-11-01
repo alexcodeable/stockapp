@@ -2,8 +2,7 @@
   <thead>
     <tr>
     <th scope="col">Email Address</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Last Name</th>
+    <th scope="col">Full Name</th>
     <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -11,8 +10,7 @@
   <% @friends.each do | friend | %>
     <tr>
     <td class=""><%= friend.email %></td>
-    <td><%= friend.first_name %></td>
-    <td><%= friend.last_name %></td>
+    <td><%= friend.name %></td>
     <td><%= link_to "unfollow", friendship_path(friend), class: 'badge bg-danger lk badge-sm', method: :delete, data: {confirm: 'Do you want to stop following this friend?'} %>
         <%= link_to "View Profile", user_path(friend), class: 'badge bg-secondary lk ms-3'%></td>
     </tr>

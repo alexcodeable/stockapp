@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  has_many :user_stocks
+  has_many :user_stocks, dependent: :delete_all
   has_many :users, through: :user_stocks
   validates :symbol, :company, presence: true
   before_save { self.symbol.downcase!}

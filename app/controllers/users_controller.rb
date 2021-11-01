@@ -35,4 +35,12 @@ class UsersController < ApplicationController
   def friends
     @friends = current_user.friends
   end
+
+  def destroy 
+    @user = User.find_by(id: params[:id])
+    delete_user_data
+    @user.destroy 
+
+    # probably a redirect would happen down here  
+  end 
 end
